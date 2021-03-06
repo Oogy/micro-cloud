@@ -6,7 +6,7 @@
 
 - name: SSH Authorized Keys
   ansible.builtin.lineinfile:
-    path: /home/"{{ admin_user }}"/.ssh/authorized_keys
+    path: /home/{{ admin_user }}/.ssh/authorized_keys
     mode: '0644'
     line: '{{ item }}'
   loop: '{{ authorized_keys }}'
