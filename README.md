@@ -11,4 +11,5 @@ Scripts and Configuration management for home cloud machines.
 read -p "Github User: " GITHUB_USER && sudo apt -y update && sudo apt -y install curl && curl -sL https://raw.githubusercontent.com/$GITHUB_USER/micro-cloud/main/init.sh | sudo -E bash -s -- $GITHUB_USER
 ```
 This will setup a crontab to run ansible-pull against your fork. 
+
 3. Commit any necessary changes to your playbook, changes will be automatically applied via the cron job.
