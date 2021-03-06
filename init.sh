@@ -2,6 +2,8 @@
 
 set -euxo pipefail
 
+GITHUB_USER=$1
+
 cd /root
 
 APT_PACKAGES="python3 python3-pip python3-venv git"
@@ -20,7 +22,7 @@ python_pkgs(){
 handoff(){
     git clone https://github.com/Oogy/micro-cloud.git
     cd micro-cloud 
-    ./playbook.yml --extra-vars="admin_user=$SUDO_USER"
+    ./playbook.yml --extra-vars="admin_user=$SUDO_USER github_user=$GITHUB_USER"
 }
 
 main(){
