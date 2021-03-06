@@ -1,0 +1,3 @@
+ - name: Community General Role
+   src: https://github.com/ansible-collections/community.general
+   version: 1.3.7
