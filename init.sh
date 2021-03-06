@@ -25,7 +25,7 @@ setup_ssh(){
 handoff(){
     git clone https://github.com/Oogy/micro-cloud.git
     cd lil-cloudy
-    ./playbook.yml
+    ./playbook.yml --extra-vars="admin_user=$SUDO_USER"
 }
 
 main(){
