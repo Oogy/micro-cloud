@@ -9,4 +9,5 @@
     path: /home/{{ admin_user }}/.ssh/authorized_keys
     mode: '0644'
     line: '{{ item }}'
+    create: yes
   loop: '{{ authorized_keys }}'
