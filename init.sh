@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo posix
+set -euxo pipefail
 
 APT_PACKAGES="python3 python3-pip python3-venv openssh-server git"
 PYTHON_PACKAGES="ansible"
