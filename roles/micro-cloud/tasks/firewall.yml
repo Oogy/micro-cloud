@@ -4,7 +4,7 @@
 
 - name: Set default UFW incoming policy
   community.general.ufw:
-    direction: in
+    direction: incoming
     default: deny
 
 - name: Allow SSH
