@@ -2,6 +2,8 @@
 
 set -euxo pipefail
 
+cd /root
+
 APT_PACKAGES="python3 python3-pip python3-venv openssh-server git"
 PYTHON_PACKAGES="ansible"
 
@@ -24,7 +26,7 @@ setup_ssh(){
 
 handoff(){
     git clone https://github.com/Oogy/micro-cloud.git
-    cd lil-cloudy
+    cd micro-cloud 
     ./playbook.yml --extra-vars="admin_user=$SUDO_USER"
 }
 
@@ -33,6 +35,11 @@ main(){
     python_pkgs
     setup_ssh
     handoff
+    clean
+}
+
+clean(){
+    rm -rf /root/micro-cloud
 }
 
 main
