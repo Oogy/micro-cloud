@@ -1,0 +1,14 @@
+- name: Install requirements
+  import_tasks: requirements.yml
+
+- name: Install system packages
+  import_tasks: apt.yml
+
+- name: Remote Access
+  import_tasks: ssh.yml
+
+- name: Configure Firewall
+  import_tasks: firewall.yml
+
+- name: Config loop - Cron
+  import_tasks: cron.yml

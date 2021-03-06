@@ -1,0 +1,14 @@
+- name: Enable UFW
+  community.general.ufw:
+    state: enabled
+
+- name: Set default UFW incoming policy
+  community.general.ufw:
+    direction: in
+    default: deny
+
+- name: Allow SSH
+  community.general.ufw:
+    rule: allow
+    port: ssh
+    log: yes

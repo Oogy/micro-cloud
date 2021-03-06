@@ -4,7 +4,7 @@ set -euxo pipefail
 
 cd /root
 
-APT_PACKAGES="python3 python3-pip python3-venv openssh-server git"
+APT_PACKAGES="python3 python3-pip python3-venv git"
 PYTHON_PACKAGES="ansible"
 
 apt_pkgs(){
@@ -17,13 +17,6 @@ python_pkgs(){
     pip3 install $PYTHON_PACKAGES
 }
 
-setup_ssh(){
-    systemctl enable ssh
-    systemctl start ssh
-    ufw allow ssh
-    ufw enable
-}
-
 handoff(){
     git clone https://github.com/Oogy/micro-cloud.git
     cd micro-cloud 
@@ -33,7 +26,6 @@ handoff(){
 main(){
     apt_pkgs
     python_pkgs
-    setup_ssh
     handoff
     clean
 }

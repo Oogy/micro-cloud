@@ -1,0 +1,7 @@
+- name: Configure Crontab
+  template:
+    src: files/crontab.j2
+    dest: /etc/crontab
+    owner: root
+    group: root
+    mode: '0644'
