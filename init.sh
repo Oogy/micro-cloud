@@ -17,8 +17,8 @@ python_pkgs(){
 }
 
 setup_ssh(){
-    systemctl enable sshd
-    systemctl start sshd
+    systemctl enable ssh
+    systemctl start ssh
     echo $ADMIN_SSH_KEY >> ~/.ssh/authorized_keys
     ufw allow ssh
     ufw enable
