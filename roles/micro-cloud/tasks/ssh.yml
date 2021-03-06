@@ -4,10 +4,20 @@
     state: started
     enabled: yes
 
+- name: SSH Home Directory
+  ansible.builtin.file:
+    path: /home/{{ admin_user }}/.ssh
+    mode: '0700'
+    owner: '{{ admin_user }}'
+    group: '{{ admin_user }}'
+    state: directory
+
 - name: SSH Authorized Keys
   ansible.builtin.lineinfile:
     path: /home/{{ admin_user }}/.ssh/authorized_keys
     mode: '0644'
+    owner: '{{ admin_user }}'
+    group: '{{ admin_user }}'
     line: '{{ item }}'
     create: yes
   loop: '{{ authorized_keys }}'
