@@ -10,5 +10,7 @@
 - name: Configure Firewall
   import_tasks: firewall.yml
 
+- name: Install Hashistack
+
 - name: Config loop - Cron
   import_tasks: cron.yml
