@@ -11,7 +11,7 @@
 - name: Nomad CA - cert
   community.crypto.x509_certificate:
     path: "{{ nomad_config_dir }}/nomad-ca.pem"
-    private_key_path: "{{ nomad_config_dir }}/nomad-ca-key.pem"
+    privatekey_path: "{{ nomad_config_dir }}/nomad-ca-key.pem"
     csr_path: "{{ nomad_config_dir }}/nomad-ca.csr"
     provider: selfsigned
 
