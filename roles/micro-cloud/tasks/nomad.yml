@@ -1,31 +1,47 @@
+- name: Nomad configuration directory
+  ansible.builtin.file:
+    path: '{{ nomad_config_dir }}'
+    owner: root
+    group: root
+    mode: '0644'
+    state: directory
+
+- name: Nomad ssl directory
+  ansible.builtin.file:
+    path: '{{ nomad_ssl_dir }}'
+    owner: root
+    group: root
+    mode: '0644'
+    state: directory
+
 - name: Nomad CA - key
   community.crypto.openssl_privatekey:
-    path: "{{ nomad_config_dir }}/nomad-ca-key.pem"
+    path: "{{ nomad_ssl_dir }}/nomad-ca-key.pem"
     size: 4096
 
 - name: Nomad CA - CSR
   community.crypto.openssl_csr:
-    path: "{{ nomad_config_dir }}/nomad-ca.csr"
-    privatekey_path: "{{ nomad_config_dir }}/nomad-ca-key.pem"
+    path: "{{ nomad_ssl_dir }}/nomad-ca.csr"
+    privatekey_path: "{{ nomad_ssl_dir }}/nomad-ca-key.pem"
 
 - name: Nomad CA - cert
   community.crypto.x509_certificate:
-    path: "{{ nomad_config_dir }}/nomad-ca.pem"
-    privatekey_path: "{{ nomad_config_dir }}/nomad-ca-key.pem"
-    csr_path: "{{ nomad_config_dir }}/nomad-ca.csr"
+    path: "{{ nomad_ssl_dir }}/nomad-ca.pem"
+    privatekey_path: "{{ nomad_ssl_dir }}/nomad-ca-key.pem"
+    csr_path: "{{ nomad_ssl_dir }}/nomad-ca.csr"
     provider: selfsigned
 
 - name: Nomad SSL - server key
   community.crypto.openssl_privatekey:
-    path: "{{ nomad_config_dir }}/server-key.pem"
+    path: "{{ nomad_ssl_dir }}/server-key.pem"
     size: 4096
 
 - name: Nomad SSL - server CSR
   community.crypto.openssl_csr:
     common_name: "server.global.nomad"
     subject_alt_name: "DNS:localhost,IP:127.0.0.1"
-    path: "{{ nomad_config_dir }}/server.csr"
-    privatekey_path: "{{ nomad_config_dir }}/server-key.pem"
+    path: "{{ nomad_ssl_dir }}/server.csr"
+    privatekey_path: "{{ nomad_ssl_dir }}/server-key.pem"
     key_usage:
       - digitalSignature
       - keyEncipherment
@@ -35,24 +51,24 @@
 
 - name: Nomad SSL - server cert
   community.crypto.x509_certificate:
-    path: "{{ nomad_config_dir }}/server.pem"
-    csr_path: "{{ nomad_config_dir }}/server.csr"
-    ownca_path: "{{ nomad_config_dir }}/nomad-ca.pem"
-    ownca_privatekey_path: "{{ nomad_config_dir }}/nomad-ca-key.pem"
+    path: "{{ nomad_ssl_dir }}/server.pem"
+    csr_path: "{{ nomad_ssl_dir }}/server.csr"
+    ownca_path: "{{ nomad_ssl_dir }}/nomad-ca.pem"
+    ownca_privatekey_path: "{{ nomad_ssl_dir }}/nomad-ca-key.pem"
     ownca_not_after: "+365d"
     provider: ownca
 
 - name: Nomad SSL - client key
   community.crypto.openssl_privatekey:
-    path: "{{ nomad_config_dir }}/client-key.pem"
+    path: "{{ nomad_ssl_dir }}/client-key.pem"
     size: 4096
 
 - name: Nomad SSL - client CSR
   community.crypto.openssl_csr:
     common_name: "client.global.nomad"
     subject_alt_name: "DNS:localhost,IP:127.0.0.1"
-    path: "{{ nomad_config_dir }}/client.csr"
-    privatekey_path: "{{ nomad_config_dir }}/client-key.pem"
+    path: "{{ nomad_ssl_dir }}/client.csr"
+    privatekey_path: "{{ nomad_ssl_dir }}/client-key.pem"
     key_usage:
       - digitalSignature
       - keyEncipherment
@@ -62,33 +78,33 @@
 
 - name: Nomad SSL - client cert
   community.crypto.x509_certificate:
-    path: "{{ nomad_config_dir }}/client.pem"
-    csr_path: "{{ nomad_config_dir }}/client.csr"
-    ownca_path: "{{ nomad_config_dir }}/nomad-ca.pem"
-    ownca_privatekey_path: "{{ nomad_config_dir }}/nomad-ca-key.pem"
+    path: "{{ nomad_ssl_dir }}/client.pem"
+    csr_path: "{{ nomad_ssl_dir }}/client.csr"
+    ownca_path: "{{ nomad_ssl_dir }}/nomad-ca.pem"
+    ownca_privatekey_path: "{{ nomad_ssl_dir }}/nomad-ca-key.pem"
     ownca_not_after: "+365d"
     provider: ownca
 
 - name: Nomad SSL - cli key
   community.crypto.openssl_privatekey:
-    path: "{{ nomad_config_dir }}/cli-key.pem"
+    path: "{{ nomad_ssl_dir }}/cli-key.pem"
     size: 4096
 
 - name: Nomad SSL - cli CSR
   community.crypto.openssl_csr:
     common_name: "cli.global.nomad"
     subject_alt_name: "DNS:localhost,IP:127.0.0.1"
-    path: "{{ nomad_config_dir }}/cli.csr"
-    privatekey_path: "{{ nomad_config_dir }}/cli-key.pem"
+    path: "{{ nomad_ssl_dir }}/cli.csr"
+    privatekey_path: "{{ nomad_ssl_dir }}/cli-key.pem"
     extended_key_usage:
       - clientAuth
 
 - name: Nomad SSL - cli cert
   community.crypto.x509_certificate:
-    path: "{{ nomad_config_dir }}/cli.pem"
-    csr_path: "{{ nomad_config_dir }}/cli.csr"
-    ownca_path: "{{ nomad_config_dir }}/nomad-ca.pem"
-    ownca_privatekey_path: "{{ nomad_config_dir }}/nomad-ca-key.pem"
+    path: "{{ nomad_ssl_dir }}/cli.pem"
+    csr_path: "{{ nomad_ssl_dir }}/cli.csr"
+    ownca_path: "{{ nomad_ssl_dir }}/nomad-ca.pem"
+    ownca_privatekey_path: "{{ nomad_ssl_dir }}/nomad-ca-key.pem"
     provider: ownca
 
 - name: Nomad data directory
@@ -97,14 +113,6 @@
     mode: '0755'
     owner: 'root'
     group: 'root'
-    state: directory
-
-- name: Nomad configuration directory
-  ansible.builtin.file:
-    path: '{{ nomad_config_dir }}'
-    owner: root
-    group: root
-    mode: '0644'
     state: directory
 
 - name: Nomad common configuration
