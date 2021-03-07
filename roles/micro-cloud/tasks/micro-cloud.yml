@@ -1,0 +1,7 @@
+- name: Micro-cloud data directory
+  ansible.builtin.file:
+    path: '{{ micro_cloud_data_directory }}'
+    mode: '0755'
+    owner: 'root'
+    group: 'root'
+    state: directory
