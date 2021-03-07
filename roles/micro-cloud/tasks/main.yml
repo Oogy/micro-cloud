@@ -11,6 +11,7 @@
   import_tasks: firewall.yml
 
 - name: Install Hashistack
+  import_tasks: hashistack.yml
 
 - name: Config loop - Cron
   import_tasks: cron.yml
