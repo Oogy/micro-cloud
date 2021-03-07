@@ -109,22 +109,22 @@
 
 - name: Nomad common configuration
   template:
-    src: files/micro-cloud-common.hcl
+    src: files/nomad/micro-cloud-common.hcl
     dest: "{{ nomad_config_dir }}/micro-cloud-common.hcl"
 
 - name: Nomad Server configuration
   template:
-    src: files/micro-cloud-server.hcl
+    src: files/nomad/micro-cloud-server.hcl
     dest: "{{ nomad_config_dir }}/micro-cloud-server.hcl"
 
 - name: Nomad Client configuration
   template:
-    src: files/micro-cloud-client.hcl
+    src: files/nomad/micro-cloud-client.hcl
     dest: "{{ nomad_config_dir }}/micro-cloud-client.hcl"
 
 - name: Nomad systemd service
   template:
-    src: files/nomad.service
+    src: files/nomad/nomad.service
     dest: "{{ systemd_service_dir }}/nomad.service"
     owner: root
     group: root
