@@ -21,6 +21,7 @@
 
 - name: Nomad CA - CSR
   community.crypto.openssl_csr:
+    common_name: "nomad-ca"
     path: "{{ nomad_ssl_dir }}/nomad-ca.csr"
     privatekey_path: "{{ nomad_ssl_dir }}/nomad-ca-key.pem"
 
