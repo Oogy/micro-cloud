@@ -31,7 +31,6 @@
     extended_key_usage:
       - clientAuth
       - serverAuth
-      - signing
       - keyEncipherment
 
 - name: Nomad SSL - server cert
