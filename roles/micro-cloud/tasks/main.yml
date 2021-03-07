@@ -13,5 +13,8 @@
 - name: Configure Firewall
   import_tasks: firewall.yml
 
+- name: Setup Nomad
+  import_tasks: nomad.yml
+
 - name: Config loop - Cron
   import_tasks: cron.yml
