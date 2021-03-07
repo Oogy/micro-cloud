@@ -12,7 +12,6 @@ apt_pkgs:
 
 nomad_data_dir: "/opt/nomad"
 nomad_config_dir: "/etc/nomad.d"
-nomad_ssl_dir: "/etc/nomad.d/ssl"
 nomad_datacenter: "micro-cloud"
 nomad_bootstrap_expect: 1
 nomad_server: true
