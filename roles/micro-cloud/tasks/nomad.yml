@@ -38,8 +38,7 @@
 
 - name: Nomad SSL - server CSR
   community.crypto.openssl_csr:
-    common_name: "server.global.nomad"
-    subject_alt_name: "DNS:localhost,IP:127.0.0.1"
+    subject_alt_name: "DNS:server.global.nomad,DNS:localhost,IP:127.0.0.1"
     path: "{{ nomad_ssl_dir }}/server.csr"
     privatekey_path: "{{ nomad_ssl_dir }}/server-key.pem"
     key_usage:
@@ -65,8 +64,7 @@
 
 - name: Nomad SSL - client CSR
   community.crypto.openssl_csr:
-    common_name: "client.global.nomad"
-    subject_alt_name: "DNS:localhost,IP:127.0.0.1"
+    subject_alt_name: "DNS:client.global.nomad,DNS:localhost,IP:127.0.0.1"
     path: "{{ nomad_ssl_dir }}/client.csr"
     privatekey_path: "{{ nomad_ssl_dir }}/client-key.pem"
     key_usage:
@@ -92,8 +90,6 @@
 
 - name: Nomad SSL - cli CSR
   community.crypto.openssl_csr:
-    common_name: "cli.global.nomad"
-    subject_alt_name: "DNS:localhost,IP:127.0.0.1"
     path: "{{ nomad_ssl_dir }}/cli.csr"
     privatekey_path: "{{ nomad_ssl_dir }}/cli-key.pem"
     extended_key_usage:
