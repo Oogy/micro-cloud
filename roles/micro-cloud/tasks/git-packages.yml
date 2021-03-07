@@ -1,0 +1,12 @@
+- name: Create git packages directory
+  ansible.builtin.file:
+    path: '{{ git_package_directory }}'
+    mode: '0700'
+    owner: '{{ admin_user }}'
+    group: '{{ admin_user }}'
+    state: directory
+
+- name: Install Slack Nebula from Git
+  get_url:
+    url: https://github.com/slackhq/nebula/releases/download/v1.3.0/nebula-linux-amd64.tar.gz
+    dest: '{{ git_package_directory }}'

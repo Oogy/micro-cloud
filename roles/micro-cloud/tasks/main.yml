@@ -1,11 +1,17 @@
 - name: Install requirements
   import_tasks: requirements.yml
 
+- name: Setup Micro-cloud
+  import_tasks: micro-cloud.yml
+
 - name: Install Hashicorp repo
-  import_tasks: hashicorp-repo.yml
+  import_tasks: apt-repos.yml
 
 - name: Install system packages
-  import_tasks: apt.yml
+  import_tasks: apt-packages.yml
+
+- name: Install git packages
+  import_tasks: git-packages.yml
 
 - name: Remote Access
   import_tasks: ssh.yml
