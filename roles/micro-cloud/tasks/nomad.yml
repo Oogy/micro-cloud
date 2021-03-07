@@ -18,16 +18,19 @@
   template:
     src: files/nomad/micro-cloud-common.hcl
     dest: "{{ nomad_config_dir }}/micro-cloud-common.hcl"
+  notify: restart nomad
 
 - name: Nomad Server configuration
   template:
     src: files/nomad/micro-cloud-server.hcl
     dest: "{{ nomad_config_dir }}/micro-cloud-server.hcl"
+  notify: restart nomad
 
 - name: Nomad Client configuration
   template:
     src: files/nomad/micro-cloud-client.hcl
     dest: "{{ nomad_config_dir }}/micro-cloud-client.hcl"
+  notify: restart nomad
 
 - name: Nomad systemd service
   template:
