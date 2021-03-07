@@ -1,6 +1,9 @@
 - name: Install requirements
   import_tasks: requirements.yml
 
+- name: Install Hashicorp repo
+  import_tasks: hashicorp-repo.yml
+
 - name: Install system packages
   import_tasks: apt.yml
 
@@ -9,9 +12,6 @@
 
 - name: Configure Firewall
   import_tasks: firewall.yml
-
-- name: Install Hashistack
-  import_tasks: hashistack.yml
 
 - name: Config loop - Cron
   import_tasks: cron.yml
