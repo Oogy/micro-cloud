@@ -1,2 +1,2 @@
 - name: Install Galaxy Roles
-  ansible.builtin.shell: ansible-galaxy install -r requirements.yml
+  ansible.builtin.shell: /usr/local/bin/ansible-galaxy install -r requirements.yml
