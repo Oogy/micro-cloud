@@ -27,7 +27,7 @@
     path: "{{ nomad_config_dir }}/server.csr"
     privatekey_path: "{{ nomad_config_dir }}/server-key.pem"
     key_usage:
-      - signature
+      - digitalSignature
     extended_key_usage:
       - clientAuth
       - serverAuth
@@ -55,7 +55,7 @@
     path: "{{ nomad_config_dir }}/client.csr"
     privatekey_path: "{{ nomad_config_dir }}/client-key.pem"
     key_usage:
-      - signature
+      - digitalSignature
     extended_key_usage:
       - clientAuth
       - serverAuth
