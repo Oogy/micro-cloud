@@ -14,22 +14,10 @@
     group: 'root'
     state: directory
 
-- name: Nomad common configuration
+- name: Nomad configuration
   template:
-    src: files/nomad/micro-cloud-common.hcl
-    dest: "{{ nomad_config_dir }}/micro-cloud-common.hcl"
-  notify: restart nomad
-
-- name: Nomad Server configuration
-  template:
-    src: files/nomad/micro-cloud-server.hcl
-    dest: "{{ nomad_config_dir }}/micro-cloud-server.hcl"
-  notify: restart nomad
-
-- name: Nomad Client configuration
-  template:
-    src: files/nomad/micro-cloud-client.hcl
-    dest: "{{ nomad_config_dir }}/micro-cloud-client.hcl"
+    src: files/nomad/micro-cloud.hcl
+    dest: "{{ nomad_config_dir }}/micro-cloud.hcl"
   notify: restart nomad
 
 - name: Nomad systemd service
