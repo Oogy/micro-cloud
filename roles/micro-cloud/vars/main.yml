@@ -9,3 +9,13 @@ apt_pkgs:
   - nomad
   - consul
   - vault
+
+nomad_server_data_dir: "/opt/nomad-server"
+nomad_client_data_dir: "/opt/nomad-client"
+nomad_config_dir: "/etc/nomad.d"
+nomad_datacenter: "micro-cloud"
+nomad_bootstrap_expect: 1
+nomad_server: true
+nomad_client: true
+
+systemd_service_dir: /etc/systemd/system
