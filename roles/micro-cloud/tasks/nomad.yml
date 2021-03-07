@@ -27,7 +27,7 @@
     path: "{{ nomad_config_dir }}/server.csr"
     privatekey_path: "{{ nomad_config_dir }}/server-key.pem"
     key_usage:
-      - signing
+      - signature
     extended_key_usage:
       - clientAuth
       - serverAuth
@@ -40,6 +40,7 @@
     csr_path: "{{ nomad_config_dir }}/server.csr"
     ownca_path: "{{ nomad_config_dir }}/nomad-ca.pem"
     ownca_privatekey_path: "{{ nomad_config_dir }}/nomad-ca-key.pem"
+    ownca_not_after: "+365d"
     provider: ownca
 
 - name: Nomad SSL - client key
@@ -54,7 +55,7 @@
     path: "{{ nomad_config_dir }}/client.csr"
     privatekey_path: "{{ nomad_config_dir }}/client-key.pem"
     key_usage:
-      - signing
+      - signature
     extended_key_usage:
       - clientAuth
       - serverAuth
@@ -66,6 +67,7 @@
     csr_path: "{{ nomad_config_dir }}/client.csr"
     ownca_path: "{{ nomad_config_dir }}/nomad-ca.pem"
     ownca_privatekey_path: "{{ nomad_config_dir }}/nomad-ca-key.pem"
+    ownca_not_after: "+365d"
     provider: ownca
 
 - name: Nomad SSL - cli key
