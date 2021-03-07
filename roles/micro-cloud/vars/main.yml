@@ -9,6 +9,3 @@ apt_pkgs:
   - nomad
   - consul
   - vault
-
-micro_cloud_data_directory: /var/lib/micro-cloud
-git_package_directory: "{{ micro_cloud_data_directory }}/git-packages"
