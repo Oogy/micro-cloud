@@ -28,10 +28,10 @@
     privatekey_path: "{{ nomad_config_dir }}/server-key.pem"
     key_usage:
       - digitalSignature
+      - keyEncipherment
     extended_key_usage:
       - clientAuth
       - serverAuth
-      - keyEncipherment
 
 - name: Nomad SSL - server cert
   community.crypto.x509_certificate:
@@ -55,10 +55,10 @@
     privatekey_path: "{{ nomad_config_dir }}/client-key.pem"
     key_usage:
       - digitalSignature
+      - keyEncipherment
     extended_key_usage:
       - clientAuth
       - serverAuth
-      - keyEncipherment
 
 - name: Nomad SSL - client cert
   community.crypto.x509_certificate:
